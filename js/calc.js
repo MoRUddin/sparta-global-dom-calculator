@@ -30,9 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
     calc();
   })
 
+  function show(viewBox){
+    screen.innerHTML = viewBox;
+  }
   function addToNum(fullNum, wordNum) {
     fullNum += wordNum;
-    screen.innerHTML = fullNum;
+    show(fullNum);
     return fullNum;
   }
   function operatorClicked(sign) {
@@ -51,24 +54,32 @@ document.addEventListener('DOMContentLoaded', function() {
   function calc(){
     switch (operation) {
       case '+':
-        screen.innerHTML = firstNum+secondNum;
+        show(firstNum+secondNum);
         firstNum = firstNum+secondNum;
         secondNum = 0;
+        currentNum = firstNum.toString();
+        opPressed = false;
         break;
       case '-':
-        screen.innerHTML = firstNum-secondNum;
+        show(firstNum-secondNum);
         firstNum = firstNum-secondNum;
         secondNum = 0;
+        currentNum = firstNum.toString();
+        opPressed = false;
         break;
       case '*':
-        screen.innerHTML = firstNum*secondNum;
+        show(firstNum*secondNum);
         firstNum = firstNum*secondNum;
         secondNum = 0;
+        currentNum = firstNum.toString();
+        opPressed = false;
         break;
       case '/':
-        screen.innerHTML = firstNum/secondNum;
+        show(firstNum/secondNum);
         firstNum = firstNum/secondNum;
         secondNum = 0;
+        currentNum = firstNum.toString();
+        opPressed = false;
         break;
       default:
         currentNum = '';
@@ -76,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         firstNum = 0;
         secondNum = 0;
         opPressed = false;
-        screen.innerHTML = 0;
+        show(0);
     }
   }
   function clearAll() {
@@ -85,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     firstNum = 0;
     secondNum = 0;
     opPressed = false;
-    screen.innerHTML = 0;
+    show(0);
   }
 
 });
